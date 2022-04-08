@@ -17,6 +17,12 @@ namespace NOTEPAD
         //private PrintDocument printDocument;
         private PageSetupDialog pageSetupDialog;
 
+        private enum CloseType
+        {
+            SaveBefor
+            , Exit
+        }
+
         public Note()
         {
             InitializeComponent();
@@ -51,7 +57,7 @@ namespace NOTEPAD
             saveAs.Click += Event_SaveAs;
             pageSet.Click += Event_PrintSet;
             print.Click += Event_Print;
-
+            exit.Click += Event_Exit;
         }
 
         private void Event_TextChanged(object sender, EventArgs e)
@@ -67,7 +73,7 @@ namespace NOTEPAD
         private void Event_Make(object sender, EventArgs e)
         {
             if (isModfied)
-                CloseBeforeProcess();
+                CloseBeforeProcess(CloseType.SaveBefor);
             else
                 ClearTextBox();
         }
@@ -129,6 +135,14 @@ namespace NOTEPAD
             }
         }
 
+        private void Event_Exit(object sender, EventArgs e)
+        {
+            if (isModfied)
+                CloseBeforeProcess(CloseType.Exit);
+            else
+                this.Close();
+        }
+
         private void ClearTextBox()
         {
             textBox1.Text = string.Empty;
@@ -136,7 +150,7 @@ namespace NOTEPAD
             isModfied = false;
         }
 
-        private void CloseBeforeProcess()
+        private void CloseBeforeProcess(CloseType type)
         {
             DialogResult dialogResult = MessageBox.Show($"변경 내용을 {this.Text}에 저장하시겠습니까?", "메모장", MessageBoxButtons.YesNoCancel);
 
@@ -144,10 +158,16 @@ namespace NOTEPAD
             {
                 case DialogResult.Yes:
                     Save();
-                    ClearTextBox();
+                    if (type == CloseType.SaveBefor)
+                        ClearTextBox();
+                    else
+                        this.Close();
                     break;
                 case DialogResult.No:
-                    ClearTextBox();
+                    if (type == CloseType.SaveBefor)
+                        ClearTextBox();
+                    else
+                        this.Close();
                     break;
                 case DialogResult.Cancel:
                     break;

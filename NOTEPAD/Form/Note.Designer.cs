@@ -40,7 +40,7 @@ namespace NOTEPAD
             this.pageSet = new System.Windows.Forms.ToolStripMenuItem();
             this.print = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.끝내기XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exit = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -78,7 +78,7 @@ namespace NOTEPAD
             this.pageSet,
             this.print,
             this.toolStripSeparator2,
-            this.끝내기XToolStripMenuItem});
+            this.exit});
             this.파일ToolStripMenuItem.Name = "파일ToolStripMenuItem";
             this.파일ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.파일ToolStripMenuItem.Text = "파일";
@@ -133,11 +133,11 @@ namespace NOTEPAD
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(191, 6);
             // 
-            // 끝내기XToolStripMenuItem
+            // exit
             // 
-            this.끝내기XToolStripMenuItem.Name = "끝내기XToolStripMenuItem";
-            this.끝내기XToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.끝내기XToolStripMenuItem.Text = "끝내기(X)";
+            this.exit.Name = "exit";
+            this.exit.Size = new System.Drawing.Size(194, 22);
+            this.exit.Text = "끝내기(X)";
             // 
             // openFileDialog1
             // 
@@ -179,7 +179,7 @@ namespace NOTEPAD
         private System.Windows.Forms.ToolStripMenuItem pageSet;
         private System.Windows.Forms.ToolStripMenuItem print;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem 끝내기XToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exit;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintDialog printDialog1;
     }
