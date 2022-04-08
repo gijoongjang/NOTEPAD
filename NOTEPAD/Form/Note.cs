@@ -30,7 +30,7 @@ namespace NOTEPAD
 
             saveFileDialog1.Title = "다른 이름으로 저장";
             saveFileDialog1.Filter = "텍스트 문서(.txt)|*.txt|모든 파일|*.*";
-            saveFileDialog1.DefaultExt = "tet";
+            saveFileDialog1.DefaultExt = "txt";
             saveFileDialog1.AddExtension = true;
         }
 
@@ -40,6 +40,8 @@ namespace NOTEPAD
 
             make.Click += Event_Make;
             open.Click += Event_Open;
+            save.Click += Event_Save;
+            saveAs.Click += Event_SaveAs;
         }
         
         private void Event_TextChanged(object sender, EventArgs e)
@@ -68,6 +70,19 @@ namespace NOTEPAD
                 textBox1.Text = sr.ReadToEnd();
                 this.Text = fileName;
                 isModfied = false;
+            }
+        }
+
+        private void Event_Save(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private void Event_SaveAs(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                SaveFile(saveFileDialog1.FileName);
             }
         }
 
@@ -115,7 +130,8 @@ namespace NOTEPAD
             {
                 sw.WriteLine(textBox1.Text);
                 isModfied = false;
-                this.Text = fileName;
+                this.Text = FileUtil.GetFileName(fileName);
+                saveFileDialog1.FileName = this.Text;
             }
         }
     }

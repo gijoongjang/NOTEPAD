@@ -35,7 +35,7 @@ namespace NOTEPAD
             this.make = new System.Windows.Forms.ToolStripMenuItem();
             this.open = new System.Windows.Forms.ToolStripMenuItem();
             this.save = new System.Windows.Forms.ToolStripMenuItem();
-            this.다른이름으로저장ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.끝내기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -67,7 +67,7 @@ namespace NOTEPAD
             this.make,
             this.open,
             this.save,
-            this.다른이름으로저장ToolStripMenuItem,
+            this.saveAs,
             this.끝내기ToolStripMenuItem});
             this.파일ToolStripMenuItem.Name = "파일ToolStripMenuItem";
             this.파일ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
@@ -94,11 +94,11 @@ namespace NOTEPAD
             this.save.Size = new System.Drawing.Size(194, 22);
             this.save.Text = "저장(S)";
             // 
-            // 다른이름으로저장ToolStripMenuItem
+            // saveAs
             // 
-            this.다른이름으로저장ToolStripMenuItem.Name = "다른이름으로저장ToolStripMenuItem";
-            this.다른이름으로저장ToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.다른이름으로저장ToolStripMenuItem.Text = "다른 이름으로 저장(A)";
+            this.saveAs.Name = "saveAs";
+            this.saveAs.Size = new System.Drawing.Size(194, 22);
+            this.saveAs.Text = "다른 이름으로 저장(A)";
             // 
             // 끝내기ToolStripMenuItem
             // 
@@ -135,7 +135,7 @@ namespace NOTEPAD
         private System.Windows.Forms.ToolStripMenuItem make;
         private System.Windows.Forms.ToolStripMenuItem open;
         private System.Windows.Forms.ToolStripMenuItem save;
-        private System.Windows.Forms.ToolStripMenuItem 다른이름으로저장ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAs;
         private System.Windows.Forms.ToolStripMenuItem 끝내기ToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
