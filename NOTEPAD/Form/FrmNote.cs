@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace NOTEPAD
 {
-    public partial class Note : BaseForm
+    public partial class FrmNote : BaseForm
     {
         private const string CST_DEFAULT_TEXT = "제목 없음";
         private const string quote = "\"";
@@ -27,7 +27,7 @@ namespace NOTEPAD
             , Exit
         }
 
-        public Note()
+        public FrmNote()
         {
             InitializeComponent();
         }

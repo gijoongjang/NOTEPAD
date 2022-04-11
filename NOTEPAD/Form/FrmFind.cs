@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static NOTEPAD.Note;
 
 namespace NOTEPAD.Popup
 {
@@ -15,14 +14,14 @@ namespace NOTEPAD.Popup
     {
         private const string quote = "\"";
 
-        private Note note;
+        private FrmNote note;
 
         public FrmFind()
         {
             InitializeComponent();
         }
 
-        public FrmFind(Note note)
+        public FrmFind(FrmNote note)
         {
             this.note = note;
 
@@ -41,7 +40,6 @@ namespace NOTEPAD.Popup
             textBox1.TextChanged += Event_TextChanged;
 
             button1.Enabled = false;
-            button2.Click += Event_Close;
             radioButton2.Checked = true;
         }
 
@@ -50,6 +48,7 @@ namespace NOTEPAD.Popup
             base.InitEvent();
 
             button1.Click += Event_Search;
+            button2.Click += Event_Close;
         }
 
         private void Event_TextChanged(object sender, EventArgs e)
@@ -59,9 +58,9 @@ namespace NOTEPAD.Popup
 
         private void Event_Search(object sender, EventArgs e)
         {
-            var findText     = textBox1.Text;
+            var findText = textBox1.Text;
             var matchCase = checkBox1.Checked;
-            var searchUp   = radioButton1.Checked;
+            var searchUp = radioButton1.Checked;
             
             if (!FindAndSelectText(findText, matchCase, searchUp))
             {

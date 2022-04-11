@@ -52,11 +52,11 @@
     <Compile Include="Form\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\Note.cs">
+    <Compile Include="Form\FrmNote.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Note.Designer.cs">
-      <DependentUpon>Note.cs</DependentUpon>
+    <Compile Include="Form\FrmNote.Designer.cs">
+      <DependentUpon>FrmNote.cs</DependentUpon>
     </Compile>
     <Compile Include="Lib\Util\FileUtil.cs" />
     <Compile Include="Form\FrmFind.cs">
@@ -67,8 +67,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form\Note.resx">
-      <DependentUpon>Note.cs</DependentUpon>
+    <EmbeddedResource Include="Form\FrmNote.resx">
+      <DependentUpon>FrmNote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmFind.resx">
       <DependentUpon>FrmFind.cs</DependentUpon>
