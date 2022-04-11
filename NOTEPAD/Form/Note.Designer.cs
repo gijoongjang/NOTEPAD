@@ -41,6 +41,20 @@ namespace NOTEPAD
             this.print = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.편집ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.undo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.cut = new System.Windows.Forms.ToolStripMenuItem();
+            this.copy = new System.Windows.Forms.ToolStripMenuItem();
+            this.paste = new System.Windows.Forms.ToolStripMenuItem();
+            this.delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.find = new System.Windows.Forms.ToolStripMenuItem();
+            this.nextFind = new System.Windows.Forms.ToolStripMenuItem();
+            this.바꾸기RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.이동GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.모두선택AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.시간날짜DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -60,7 +74,8 @@ namespace NOTEPAD
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.파일ToolStripMenuItem});
+            this.파일ToolStripMenuItem,
+            this.편집ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(629, 24);
@@ -80,8 +95,8 @@ namespace NOTEPAD
             this.toolStripSeparator2,
             this.exit});
             this.파일ToolStripMenuItem.Name = "파일ToolStripMenuItem";
-            this.파일ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.파일ToolStripMenuItem.Text = "파일";
+            this.파일ToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.파일ToolStripMenuItem.Text = "파일(F)";
             // 
             // make
             // 
@@ -139,6 +154,113 @@ namespace NOTEPAD
             this.exit.Size = new System.Drawing.Size(194, 22);
             this.exit.Text = "끝내기(X)";
             // 
+            // 편집ToolStripMenuItem
+            // 
+            this.편집ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.undo,
+            this.toolStripSeparator3,
+            this.cut,
+            this.copy,
+            this.paste,
+            this.delete,
+            this.toolStripSeparator4,
+            this.find,
+            this.nextFind,
+            this.바꾸기RToolStripMenuItem,
+            this.이동GToolStripMenuItem,
+            this.모두선택AToolStripMenuItem,
+            this.시간날짜DToolStripMenuItem});
+            this.편집ToolStripMenuItem.Name = "편집ToolStripMenuItem";
+            this.편집ToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.편집ToolStripMenuItem.Text = "편집(E)";
+            // 
+            // undo
+            // 
+            this.undo.Name = "undo";
+            this.undo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undo.Size = new System.Drawing.Size(184, 22);
+            this.undo.Text = "실행 취소(U)";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(181, 6);
+            // 
+            // cut
+            // 
+            this.cut.Name = "cut";
+            this.cut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.cut.Size = new System.Drawing.Size(184, 22);
+            this.cut.Text = "잘라내기(T)";
+            // 
+            // copy
+            // 
+            this.copy.Name = "copy";
+            this.copy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copy.Size = new System.Drawing.Size(184, 22);
+            this.copy.Text = "복사(C)";
+            // 
+            // paste
+            // 
+            this.paste.Name = "paste";
+            this.paste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.paste.Size = new System.Drawing.Size(184, 22);
+            this.paste.Text = "붙여넣기(P)";
+            // 
+            // delete
+            // 
+            this.delete.Name = "delete";
+            this.delete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.delete.Size = new System.Drawing.Size(184, 22);
+            this.delete.Text = "삭제(L)";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(181, 6);
+            // 
+            // find
+            // 
+            this.find.Name = "find";
+            this.find.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.find.Size = new System.Drawing.Size(184, 22);
+            this.find.Text = "찾기(F)";
+            // 
+            // nextFind
+            // 
+            this.nextFind.Name = "nextFind";
+            this.nextFind.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.nextFind.Size = new System.Drawing.Size(184, 22);
+            this.nextFind.Text = "다음 찾기(N)";
+            // 
+            // 바꾸기RToolStripMenuItem
+            // 
+            this.바꾸기RToolStripMenuItem.Name = "바꾸기RToolStripMenuItem";
+            this.바꾸기RToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+            this.바꾸기RToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.바꾸기RToolStripMenuItem.Text = "바꾸기(R)";
+            // 
+            // 이동GToolStripMenuItem
+            // 
+            this.이동GToolStripMenuItem.Name = "이동GToolStripMenuItem";
+            this.이동GToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+            this.이동GToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.이동GToolStripMenuItem.Text = "이동(G)";
+            // 
+            // 모두선택AToolStripMenuItem
+            // 
+            this.모두선택AToolStripMenuItem.Name = "모두선택AToolStripMenuItem";
+            this.모두선택AToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.모두선택AToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.모두선택AToolStripMenuItem.Text = "모두 선택(A)";
+            // 
+            // 시간날짜DToolStripMenuItem
+            // 
+            this.시간날짜DToolStripMenuItem.Name = "시간날짜DToolStripMenuItem";
+            this.시간날짜DToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.시간날짜DToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.시간날짜DToolStripMenuItem.Text = "시간/날짜(D)";
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -165,8 +287,6 @@ namespace NOTEPAD
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 파일ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem make;
@@ -182,6 +302,21 @@ namespace NOTEPAD
         private System.Windows.Forms.ToolStripMenuItem exit;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.ToolStripMenuItem 편집ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem undo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem cut;
+        private System.Windows.Forms.ToolStripMenuItem copy;
+        private System.Windows.Forms.ToolStripMenuItem paste;
+        private System.Windows.Forms.ToolStripMenuItem delete;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem find;
+        private System.Windows.Forms.ToolStripMenuItem nextFind;
+        private System.Windows.Forms.ToolStripMenuItem 바꾸기RToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 이동GToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 모두선택AToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 시간날짜DToolStripMenuItem;
+        public System.Windows.Forms.TextBox textBox1;
     }
 }
 

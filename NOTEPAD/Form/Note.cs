@@ -1,4 +1,5 @@
 ﻿using NOTEPAD.Lib.Util;
+using NOTEPAD.Popup;
 using System;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -11,11 +12,14 @@ namespace NOTEPAD
     public partial class Note : BaseForm
     {
         private const string CST_DEFAULT_TEXT = "제목 없음";
+        private const string quote = "\"";
 
         private bool isModfied;
 
         //private PrintDocument printDocument;
         private PageSetupDialog pageSetupDialog;
+
+        private FrmFind frmFind = null;
 
         private enum CloseType
         {
@@ -43,6 +47,12 @@ namespace NOTEPAD
             saveFileDialog1.Filter = "텍스트 문서(.txt)|*.txt|모든 파일|*.*";
             saveFileDialog1.DefaultExt = "txt";
             saveFileDialog1.AddExtension = true;
+
+            undo.Enabled = false;
+            cut.Enabled = false;
+            copy.Enabled = false;
+            delete.Enabled = false;
+            find.Enabled = false;
         }
 
         protected override void InitEvent()
@@ -51,6 +61,7 @@ namespace NOTEPAD
 
             printDocument1.PrintPage += Event_PrintPage;
 
+            //파일
             make.Click += Event_Make;
             open.Click += Event_Open;
             save.Click += Event_Save;
@@ -58,11 +69,25 @@ namespace NOTEPAD
             pageSet.Click += Event_PrintSet;
             print.Click += Event_Print;
             exit.Click += Event_Exit;
+
+            //편집
+            undo.Click += Event_Undo;
+            cut.Click += Event_Cut;
+            copy.Click += Event_Copy;
+            paste.Click += Event_Paste;
+            delete.Click += Event_Delete;
+            find.Click += Event_Find;
+            nextFind.Click += Event_NextFind;
         }
 
         private void Event_TextChanged(object sender, EventArgs e)
         {
-            isModfied = true;
+            isModfied       = true;
+            undo.Enabled  = true;
+            cut.Enabled     = true;
+            copy.Enabled   = true;
+            delete.Enabled = true;
+            find.Enabled    = true;
         }
 
         private void Event_PrintPage(object sender, PrintPageEventArgs e)
@@ -143,6 +168,76 @@ namespace NOTEPAD
                 this.Close();
         }
 
+        private void Event_Undo(object sender, EventArgs e)
+        {
+            if (textBox1.CanUndo)
+            {
+                textBox1.Undo();
+                //textBox1.ClearUndo();
+            }
+        }
+        
+        private void Event_Cut(object sender, EventArgs e)
+        {
+            if (textBox1.SelectedText != string.Empty)
+                textBox1.Cut();
+        }
+
+        private void Event_Copy(object sender, EventArgs e)
+        {
+            if (textBox1.SelectionLength > 0)
+                textBox1.Copy();
+        }
+
+        private void Event_Paste(object sender, EventArgs e)
+        {
+            if (Clipboard.GetDataObject().GetDataPresent(DataFormats.Text))
+                textBox1.Paste();
+        }
+
+        private void Event_Delete(object sender, EventArgs e)
+        {
+            textBox1.SelectedText = string.Empty;
+        }
+
+        private void Event_Find(object sender, EventArgs e)
+        {
+            Find();
+            //frmFind.Popup(this);
+            //FrmFind form = new FrmFind(this);
+
+            //form.Show();
+        }
+
+        private void Event_NextFind(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(LastFindText))
+                Find();
+
+            if (!frmFind.FindAndSelectText(LastFindText, LastMachCase, LastSearchup))
+            {
+                MessageBox.Show($"{quote}{LastFindText}{quote}을(를) 찾을 수 없습니다." 
+                                        , "메모장"
+                                        , MessageBoxButtons.OK);
+            }
+        }
+
+        private void Find()
+        {
+            if (textBox1.Text.Length < 1)
+                return;
+
+            if (frmFind == null)
+            {
+                frmFind = new FrmFind(this);
+            }
+
+            if (!frmFind.Visible)
+                frmFind.Show(this);
+            else
+                frmFind.Show();
+        }
+
         private void ClearTextBox()
         {
             textBox1.Text = string.Empty;
@@ -197,5 +292,15 @@ namespace NOTEPAD
                 saveFileDialog1.FileName = this.Text;
             }
         }
+
+        public string LastFindText { get; set; }
+        public bool LastMachCase  { get; set; }
+        public bool LastSearchup { get; set; }
+
     }
+
+    //public interface IFindNotify
+    //{
+    //    void Notify(string text);
+    //}
 }
