@@ -1,5 +1,5 @@
 ﻿
-namespace NOTEPAD.Popup
+namespace NOTEPAD
 {
     partial class FrmFind
     {

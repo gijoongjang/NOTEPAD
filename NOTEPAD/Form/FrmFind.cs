@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NOTEPAD.Popup
+namespace NOTEPAD
 {
     public partial class FrmFind : BaseForm
     {
@@ -37,8 +37,6 @@ namespace NOTEPAD.Popup
         {
             this.Text = "찾기";
 
-            textBox1.TextChanged += Event_TextChanged;
-
             button1.Enabled = false;
             radioButton2.Checked = true;
         }
@@ -46,6 +44,8 @@ namespace NOTEPAD.Popup
         protected override void InitEvent()
         {
             base.InitEvent();
+
+            textBox1.TextChanged += Event_TextChanged;
 
             button1.Click += Event_Search;
             button2.Click += Event_Close;
@@ -62,7 +62,7 @@ namespace NOTEPAD.Popup
             var matchCase = checkBox1.Checked;
             var searchUp = radioButton1.Checked;
             
-            if (!FindAndSelectText(findText, matchCase, searchUp))
+            if (!note.FindAndSelectText(findText, matchCase, searchUp))
             {
                 MessageBox.Show($"{quote}{findText}{quote}을(를) 찾을 수 없습니다."
                                         , "메모장"
@@ -74,60 +74,7 @@ namespace NOTEPAD.Popup
         {
             this.Close();
         }
-
-        public bool FindAndSelectText(string findText, bool matchCase, bool searchUp)
-        {
-            int index;
-            var mode = matchCase ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase;
-
-            if (searchUp)
-                index = note.textBox1.Text.LastIndexOf(findText, SelectionStart-SelectionLength, mode);
-            else
-                index = note.textBox1.Text.IndexOf(findText, SelectionEnd, mode);
-
-            if (index == -1)
-                return false;
-
-            SelectionStart = index;
-            SelectionLength = findText.Length;
-            note.textBox1.Focus();
-
-            note.LastFindText   = findText;          
-            note.LastMachCase = matchCase;
-            note.LastSearchup  = searchUp;
-
-            return true;
-        }
-
-        public int SelectionStart
-        {
-            get
-            {
-                return note.textBox1.SelectionStart;
-            }
-            set
-            {
-                note.textBox1.SelectionStart = value;
-                note.textBox1.ScrollToCaret();
-            }
-        }
-
-        public int SelectionLength 
-        {
-            get 
-            {
-                return note.textBox1.SelectionLength;
-            }
-            set
-            {
-                note.textBox1.SelectionLength = value;
-            } 
-        }
-
-        public int SelectionEnd 
-        { 
-            get { return SelectionStart + SelectionLength; }
-        }
+        
         //public static void Popup(Note note)
         //{
         //    using (frmFind form = new frmFind())

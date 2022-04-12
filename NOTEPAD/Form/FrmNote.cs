@@ -1,5 +1,4 @@
 ﻿using NOTEPAD.Lib.Util;
-using NOTEPAD.Popup;
 using System;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -20,6 +19,7 @@ namespace NOTEPAD
         private PageSetupDialog pageSetupDialog;
 
         private FrmFind frmFind = null;
+        private FrmReplaces frmReplaces = null;
 
         private enum CloseType
         {
@@ -78,6 +78,7 @@ namespace NOTEPAD
             delete.Click += Event_Delete;
             find.Click += Event_Find;
             nextFind.Click += Event_NextFind;
+            replace.Click += Event_Replace;
         }
 
         private void Event_TextChanged(object sender, EventArgs e)
@@ -214,12 +215,23 @@ namespace NOTEPAD
             if (string.IsNullOrEmpty(LastFindText))
                 Find();
 
-            if (!frmFind.FindAndSelectText(LastFindText, LastMachCase, LastSearchup))
+            if (!FindAndSelectText(LastFindText, LastMachCase, LastSearchup))
             {
                 MessageBox.Show($"{quote}{LastFindText}{quote}을(를) 찾을 수 없습니다." 
                                         , "메모장"
                                         , MessageBoxButtons.OK);
             }
+        }
+
+        private void Event_Replace(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(LastFindText))
+            {
+                frmReplaces = new FrmReplaces(this);
+
+                frmReplaces.Show();
+            }
+
         }
 
         private void Find()
@@ -291,6 +303,60 @@ namespace NOTEPAD
                 this.Text = FileUtil.GetFileName(fileName);
                 saveFileDialog1.FileName = this.Text;
             }
+        }
+
+        public bool FindAndSelectText(string findText, bool matchCase, bool searchUp)
+        {
+            int index;
+            var mode = matchCase ? StringComparison.CurrentCulture : StringComparison.CurrentCultureIgnoreCase;
+
+            if (searchUp)
+                index = textBox1.Text.LastIndexOf(findText, SelectionStart - SelectionLength, mode);
+            else
+                index = textBox1.Text.IndexOf(findText, SelectionEnd, mode);
+
+            if (index == -1)
+                return false;
+
+            SelectionStart = index;
+            SelectionLength = findText.Length;
+            textBox1.Focus();
+
+            LastFindText = findText;
+            LastMachCase = matchCase;
+            LastSearchup = searchUp;
+
+            return true;
+        }
+
+        public int SelectionStart
+        {
+            get
+            {
+                return textBox1.SelectionStart;
+            }
+            set
+            {
+                textBox1.SelectionStart = value;
+                textBox1.ScrollToCaret();
+            }
+        }
+
+        public int SelectionLength
+        {
+            get
+            {
+                return textBox1.SelectionLength;
+            }
+            set
+            {
+                textBox1.SelectionLength = value;
+            }
+        }
+
+        public int SelectionEnd
+        {
+            get { return SelectionStart + SelectionLength; }
         }
 
         public string LastFindText { get; set; }
