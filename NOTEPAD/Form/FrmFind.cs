@@ -46,6 +46,7 @@ namespace NOTEPAD
             base.InitEvent();
 
             textBox1.TextChanged += Event_TextChanged;
+            textBox1.KeyDown += Event_KeyDown;
 
             button1.Click += Event_Search;
             button2.Click += Event_Close;
@@ -54,6 +55,12 @@ namespace NOTEPAD
         private void Event_TextChanged(object sender, EventArgs e)
         {
             button1.Enabled = textBox1.Text.Length > 0;
+        }
+
+        private void Event_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                button1.PerformClick();
         }
 
         private void Event_Search(object sender, EventArgs e)

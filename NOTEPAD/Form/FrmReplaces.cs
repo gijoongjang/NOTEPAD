@@ -44,6 +44,22 @@ namespace NOTEPAD
            button2.Click += Event_Replace;
            button3.Click += Event_ReplaceAll;
            button4.Click += Event_Close;
+
+           textBox1.KeyDown += Event_FindEnter;
+           textBox2.KeyDown += Event_ReplaceEnter;
+
+        }
+
+        private void Event_FindEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                button1.PerformClick();
+        }
+
+        private void Event_ReplaceEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                button2.PerformClick();
         }
 
         private void Event_Next(object sender, EventArgs e)
@@ -51,7 +67,7 @@ namespace NOTEPAD
             var findText = textBox1.Text;
             var matchCase = checkBox1.Checked;
 
-            if (note.FindAndSelectText(findText, matchCase, false))
+            if (!note.FindAndSelectText(findText, matchCase, false))
             {
                 MessageBox.Show($"{quote}{findText}{quote}을(를) 찾을 수 없습니다."
                                         , "메모장"
