@@ -53,6 +53,8 @@ namespace NOTEPAD
             copy.Enabled = false;
             delete.Enabled = false;
             find.Enabled = false;
+
+            autoLineChange.Checked = true;
         }
 
         protected override void InitEvent()
@@ -82,6 +84,10 @@ namespace NOTEPAD
             moveLine.Click += Event_MoveLine;
             selectAll.Click += Event_SelectAll;
             timeDate.Click += Event_TimeDate;
+
+            //서식
+            autoLineChange.Click += Event_AutoLineChange;
+            font.Click += Event_Font;
         }
 
         private void Event_TextChanged(object sender, EventArgs e)
@@ -266,6 +272,22 @@ namespace NOTEPAD
         private void Event_TimeDate(object sender, EventArgs e)
         {
             textBox1.Text = DateTime.Now.ToString();
+        }
+
+        private void Event_AutoLineChange(object sender, EventArgs e)
+        {
+            textBox1.WordWrap = !(textBox1.WordWrap);
+            autoLineChange.Checked = !(autoLineChange.Checked);
+        }
+
+        private void Event_Font(object sender, EventArgs e)
+        {
+            FontDialog fontDialog = new FontDialog();
+
+            if (fontDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            textBox1.Font = fontDialog.Font;
         }
 
         private void Find()

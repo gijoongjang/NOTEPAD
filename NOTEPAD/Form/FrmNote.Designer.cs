@@ -59,6 +59,9 @@ namespace NOTEPAD
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.서식ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoLineChange = new System.Windows.Forms.ToolStripMenuItem();
+            this.font = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +78,8 @@ namespace NOTEPAD
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.파일ToolStripMenuItem,
-            this.편집ToolStripMenuItem});
+            this.편집ToolStripMenuItem,
+            this.서식ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(629, 24);
@@ -269,6 +273,27 @@ namespace NOTEPAD
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // 서식ToolStripMenuItem
+            // 
+            this.서식ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.autoLineChange,
+            this.font});
+            this.서식ToolStripMenuItem.Name = "서식ToolStripMenuItem";
+            this.서식ToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.서식ToolStripMenuItem.Text = "서식(O)";
+            // 
+            // autoLineChange
+            // 
+            this.autoLineChange.Name = "autoLineChange";
+            this.autoLineChange.Size = new System.Drawing.Size(180, 22);
+            this.autoLineChange.Text = "자동 줄 바꿈(W)";
+            // 
+            // font
+            // 
+            this.font.Name = "font";
+            this.font.Size = new System.Drawing.Size(180, 22);
+            this.font.Text = "글꼴(F)";
+            // 
             // FrmNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -317,6 +342,9 @@ namespace NOTEPAD
         private System.Windows.Forms.ToolStripMenuItem selectAll;
         private System.Windows.Forms.ToolStripMenuItem timeDate;
         public System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripMenuItem 서식ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem autoLineChange;
+        private System.Windows.Forms.ToolStripMenuItem font;
     }
 }
 
