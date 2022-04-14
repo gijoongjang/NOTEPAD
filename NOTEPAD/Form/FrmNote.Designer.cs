@@ -52,7 +52,7 @@ namespace NOTEPAD
             this.find = new System.Windows.Forms.ToolStripMenuItem();
             this.nextFind = new System.Windows.Forms.ToolStripMenuItem();
             this.replace = new System.Windows.Forms.ToolStripMenuItem();
-            this.이동GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveLine = new System.Windows.Forms.ToolStripMenuItem();
             this.모두선택AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.시간날짜DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -167,7 +167,7 @@ namespace NOTEPAD
             this.find,
             this.nextFind,
             this.replace,
-            this.이동GToolStripMenuItem,
+            this.moveLine,
             this.모두선택AToolStripMenuItem,
             this.시간날짜DToolStripMenuItem});
             this.편집ToolStripMenuItem.Name = "편집ToolStripMenuItem";
@@ -240,12 +240,12 @@ namespace NOTEPAD
             this.replace.Size = new System.Drawing.Size(184, 22);
             this.replace.Text = "바꾸기(R)";
             // 
-            // 이동GToolStripMenuItem
+            // moveLine
             // 
-            this.이동GToolStripMenuItem.Name = "이동GToolStripMenuItem";
-            this.이동GToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
-            this.이동GToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.이동GToolStripMenuItem.Text = "이동(G)";
+            this.moveLine.Name = "moveLine";
+            this.moveLine.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+            this.moveLine.Size = new System.Drawing.Size(184, 22);
+            this.moveLine.Text = "이동(G)";
             // 
             // 모두선택AToolStripMenuItem
             // 
@@ -313,7 +313,7 @@ namespace NOTEPAD
         private System.Windows.Forms.ToolStripMenuItem find;
         private System.Windows.Forms.ToolStripMenuItem nextFind;
         private System.Windows.Forms.ToolStripMenuItem replace;
-        private System.Windows.Forms.ToolStripMenuItem 이동GToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem moveLine;
         private System.Windows.Forms.ToolStripMenuItem 모두선택AToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 시간날짜DToolStripMenuItem;
         public System.Windows.Forms.TextBox textBox1;

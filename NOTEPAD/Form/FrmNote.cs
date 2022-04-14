@@ -79,16 +79,17 @@ namespace NOTEPAD
             find.Click += Event_Find;
             nextFind.Click += Event_NextFind;
             replace.Click += Event_Replace;
+            moveLine.Click += Event_MoveLine;
         }
 
         private void Event_TextChanged(object sender, EventArgs e)
         {
-            isModfied       = true;
-            undo.Enabled  = true;
-            cut.Enabled     = true;
-            copy.Enabled   = true;
-            delete.Enabled = true;
-            find.Enabled    = true;
+            isModfied = true;
+            undo.Enabled = true;
+            cut.Enabled = true;
+            copy.Enabled = true;
+            delete.Enabled= true;
+            find.Enabled = true;
         }
 
         private void Event_PrintPage(object sender, PrintPageEventArgs e)
@@ -234,6 +235,27 @@ namespace NOTEPAD
 
         }
 
+        private void Event_MoveLine(object sender, EventArgs e)
+        {
+            int totalLineLength = textBox1.Lines.Length;
+            int currentLineNumber = textBox1.GetLineFromCharIndex(textBox1.SelectionStart) + 1;
+
+            int line = FrmMoveLine.Popup(totalLineLength, currentLineNumber);
+
+            if (line == -1)
+                return;
+
+            int movedLineNumber = 0;
+
+            for (int i = 0; i < line - 1; i++)
+            {
+                movedLineNumber += textBox1.Lines[i].Length + 2;    //\r\n contains
+            }
+
+            textBox1.SelectionStart = movedLineNumber;
+            textBox1.ScrollToCaret();
+        }
+
         private void Find()
         {
             if (textBox1.Text.Length < 1)
@@ -365,7 +387,7 @@ namespace NOTEPAD
 
     }
 
-    //public interface IFindNotify
+    //public interface IFindLineNotify
     //{
     //    void Notify(string text);
     //}
