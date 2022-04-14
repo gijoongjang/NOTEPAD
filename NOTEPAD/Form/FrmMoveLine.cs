@@ -29,7 +29,25 @@ namespace NOTEPAD
 
         protected override void InitEvent()
         {
+            textBox1.KeyPress += Event_KeyPress;
+
             button1.Click += Event_Move;
+            button2.Click += Event_Close;
+        }
+
+        private void Event_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ( ( !char.IsDigit(e.KeyChar) ) && ( !char.IsControl(e.KeyChar) ) )
+            {
+                TextBox textBox = sender as TextBox;
+
+                ToolTip toolTip = new ToolTip();
+                toolTip.ToolTipTitle = "허용되지 않는 문자";
+                toolTip.ToolTipIcon = ToolTipIcon.Error;
+                toolTip.Show("여기에는 숫자만 입력할 수 있습니다.", textBox, 0, 0, 1000);
+
+                e.Handled = true;
+            }
         }
 
         private void Event_Move(object sender, EventArgs e)
@@ -44,6 +62,11 @@ namespace NOTEPAD
             }
 
             DialogResult = DialogResult.Yes;
+        }
+
+        private void Event_Close(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         public static int Popup(int totalLineLength, int currentLine)
