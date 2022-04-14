@@ -80,6 +80,8 @@ namespace NOTEPAD
             nextFind.Click += Event_NextFind;
             replace.Click += Event_Replace;
             moveLine.Click += Event_MoveLine;
+            selectAll.Click += Event_SelectAll;
+            timeDate.Click += Event_TimeDate;
         }
 
         private void Event_TextChanged(object sender, EventArgs e)
@@ -254,6 +256,16 @@ namespace NOTEPAD
 
             textBox1.SelectionStart = movedLineNumber;
             textBox1.ScrollToCaret();
+        }
+
+        private void Event_SelectAll(object sender, EventArgs e)
+        {
+            textBox1.SelectAll();
+        }
+
+        private void Event_TimeDate(object sender, EventArgs e)
+        {
+            textBox1.Text = DateTime.Now.ToString();
         }
 
         private void Find()

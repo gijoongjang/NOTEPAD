@@ -53,8 +53,8 @@ namespace NOTEPAD
             this.nextFind = new System.Windows.Forms.ToolStripMenuItem();
             this.replace = new System.Windows.Forms.ToolStripMenuItem();
             this.moveLine = new System.Windows.Forms.ToolStripMenuItem();
-            this.모두선택AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.시간날짜DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.timeDate = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -168,8 +168,8 @@ namespace NOTEPAD
             this.nextFind,
             this.replace,
             this.moveLine,
-            this.모두선택AToolStripMenuItem,
-            this.시간날짜DToolStripMenuItem});
+            this.selectAll,
+            this.timeDate});
             this.편집ToolStripMenuItem.Name = "편집ToolStripMenuItem";
             this.편집ToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.편집ToolStripMenuItem.Text = "편집(E)";
@@ -247,19 +247,19 @@ namespace NOTEPAD
             this.moveLine.Size = new System.Drawing.Size(184, 22);
             this.moveLine.Text = "이동(G)";
             // 
-            // 모두선택AToolStripMenuItem
+            // selectAll
             // 
-            this.모두선택AToolStripMenuItem.Name = "모두선택AToolStripMenuItem";
-            this.모두선택AToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.모두선택AToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.모두선택AToolStripMenuItem.Text = "모두 선택(A)";
+            this.selectAll.Name = "selectAll";
+            this.selectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.selectAll.Size = new System.Drawing.Size(184, 22);
+            this.selectAll.Text = "모두 선택(A)";
             // 
-            // 시간날짜DToolStripMenuItem
+            // timeDate
             // 
-            this.시간날짜DToolStripMenuItem.Name = "시간날짜DToolStripMenuItem";
-            this.시간날짜DToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.시간날짜DToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.시간날짜DToolStripMenuItem.Text = "시간/날짜(D)";
+            this.timeDate.Name = "timeDate";
+            this.timeDate.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.timeDate.Size = new System.Drawing.Size(184, 22);
+            this.timeDate.Text = "시간/날짜(D)";
             // 
             // openFileDialog1
             // 
@@ -314,8 +314,8 @@ namespace NOTEPAD
         private System.Windows.Forms.ToolStripMenuItem nextFind;
         private System.Windows.Forms.ToolStripMenuItem replace;
         private System.Windows.Forms.ToolStripMenuItem moveLine;
-        private System.Windows.Forms.ToolStripMenuItem 모두선택AToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 시간날짜DToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectAll;
+        private System.Windows.Forms.ToolStripMenuItem timeDate;
         public System.Windows.Forms.TextBox textBox1;
     }
 }
