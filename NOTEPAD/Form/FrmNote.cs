@@ -12,6 +12,7 @@ namespace NOTEPAD
     {
         private const string CST_DEFAULT_TEXT = "제목 없음";
         private const string quote = "\"";
+        private int percentage = 100;
 
         private bool isModfied;
 
@@ -25,6 +26,13 @@ namespace NOTEPAD
         {
             SaveBefor
             , Exit
+        }
+
+        public enum ZoomType
+        {
+            ZoomIn
+            , ZoomOut
+            , Default
         }
 
         public FrmNote()
@@ -55,6 +63,12 @@ namespace NOTEPAD
             find.Enabled = false;
 
             autoLineChange.Checked = true;
+            status.Checked = true;
+
+            toolStripStatusLabel2.Text = "Ln 1, Col 1";
+            toolStripStatusLabel3.Text = $"{percentage}%";
+            toolStripStatusLabel4.Text = "Windows (CRLF)   ";
+            toolStripStatusLabel5.Text = "UTF-8                ";
         }
 
         protected override void InitEvent()
@@ -88,6 +102,12 @@ namespace NOTEPAD
             //서식
             autoLineChange.Click += Event_AutoLineChange;
             font.Click += Event_Font;
+
+            //보기
+            zoomIn.Click += Event_ZoomIn;
+            zoomOut.Click += Event_ZoomOut;
+            zoomRestore.Click += Event_ZoomRestore;
+            status.Click += Event_Status;
         }
 
         private void Event_TextChanged(object sender, EventArgs e)
@@ -98,6 +118,8 @@ namespace NOTEPAD
             copy.Enabled = true;
             delete.Enabled= true;
             find.Enabled = true;
+
+            toolStripStatusLabel2.Text = LookUtil.GetStatusBarLineAndColumn(CurrentLine, CurrentColumn);
         }
 
         private void Event_PrintPage(object sender, PrintPageEventArgs e)
@@ -246,9 +268,9 @@ namespace NOTEPAD
         private void Event_MoveLine(object sender, EventArgs e)
         {
             int totalLineLength = textBox1.Lines.Length;
-            int currentLineNumber = textBox1.GetLineFromCharIndex(textBox1.SelectionStart) + 1;
+            //int currentLineNumber = textBox1.GetLineFromCharIndex(textBox1.SelectionStart) + 1;
 
-            int line = FrmMoveLine.Popup(totalLineLength, currentLineNumber);
+            int line = FrmMoveLine.Popup(totalLineLength, CurrentLine);
 
             if (line == -1)
                 return;
@@ -260,7 +282,7 @@ namespace NOTEPAD
                 movedLineNumber += textBox1.Lines[i].Length + 2;    //\r\n contains
             }
 
-            textBox1.SelectionStart = movedLineNumber;
+            SelectionStart = movedLineNumber;
             textBox1.ScrollToCaret();
         }
 
@@ -288,6 +310,50 @@ namespace NOTEPAD
                 return;
 
             textBox1.Font = fontDialog.Font;
+        }
+
+        private void Event_ZoomIn(object sender, EventArgs e)
+        {
+            //float currentFontSize = textBox1.Font.Size;
+            //currentFontSize += 1.0F;
+
+            LookUtil.SetFont(textBox1, ZoomType.ZoomIn);
+            LookUtil.SetStatusBarLabel(toolStripStatusLabel3, ZoomType.ZoomIn);
+
+            //textBox1.Font = new Font(textBox1.Font.Name, currentFontSize, textBox1.Font.Style, textBox1.Font.Unit);
+            //toolStripStatusLabel3.Text = getStatusBarPercentage(ZoomType.ZoomIn);
+        }
+
+        private void Event_ZoomOut(object sender, EventArgs e)
+        {
+            LookUtil.SetFont(textBox1, ZoomType.ZoomOut);
+            LookUtil.SetStatusBarLabel(toolStripStatusLabel3, ZoomType.ZoomOut);
+
+            //textBox1.Font = new Font(textBox1.Font.Name, currentFontSize, textBox1.Font.Style, textBox1.Font.Unit);
+            //toolStripStatusLabel3.Text = getStatusBarPercentage(ZoomType.ZoomOut);
+        }
+
+        private void Event_ZoomRestore(object sender, EventArgs e)
+        {
+            LookUtil.SetFont(textBox1, ZoomType.Default);
+            LookUtil.SetStatusBarLabel(toolStripStatusLabel3, ZoomType.Default);
+            //textBox1.Font = new Font(textBox1.Font.Name, 9, textBox1.Font.Style, textBox1.Font.Unit);
+            //toolStripStatusLabel3.Text = getStatusBarPercentage(ZoomType.Default);
+        }
+
+        private void Event_Status(object sender, EventArgs e)                                      
+        {
+            if (statusStrip1.Visible)
+            {
+                statusStrip1.Visible = false;
+                status.Checked = false;
+            }
+            else
+            {
+                statusStrip1.Visible = true;
+                status.Checked = true;
+                toolStripStatusLabel2.Text = LookUtil.GetStatusBarLineAndColumn(CurrentLine, CurrentColumn);
+            }
         }
 
         private void Find()
@@ -415,10 +481,25 @@ namespace NOTEPAD
             get { return SelectionStart + SelectionLength; }
         }
 
+        public int CurrentColumn 
+        { 
+            get 
+            { 
+                return SelectionStart - textBox1.GetFirstCharIndexOfCurrentLine() + 1; 
+            } 
+        }
+
+        public int CurrentLine 
+        { 
+            get 
+            { 
+                return textBox1.GetLineFromCharIndex(SelectionStart) + 1; 
+            } 
+        }
+
         public string LastFindText { get; set; }
         public bool LastMachCase  { get; set; }
         public bool LastSearchup { get; set; }
-
     }
 
     //public interface IFindLineNotify

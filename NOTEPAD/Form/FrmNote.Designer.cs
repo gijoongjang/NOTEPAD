@@ -55,14 +55,27 @@ namespace NOTEPAD
             this.moveLine = new System.Windows.Forms.ToolStripMenuItem();
             this.selectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.timeDate = new System.Windows.Forms.ToolStripMenuItem();
+            this.서식ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoLineChange = new System.Windows.Forms.ToolStripMenuItem();
+            this.font = new System.Windows.Forms.ToolStripMenuItem();
+            this.보기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.확대하기축소하기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomIn = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomRestore = new System.Windows.Forms.ToolStripMenuItem();
+            this.status = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.서식ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.autoLineChange = new System.Windows.Forms.ToolStripMenuItem();
-            this.font = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -79,7 +92,8 @@ namespace NOTEPAD
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.파일ToolStripMenuItem,
             this.편집ToolStripMenuItem,
-            this.서식ToolStripMenuItem});
+            this.서식ToolStripMenuItem,
+            this.보기ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(629, 24);
@@ -265,14 +279,6 @@ namespace NOTEPAD
             this.timeDate.Size = new System.Drawing.Size(184, 22);
             this.timeDate.Text = "시간/날짜(D)";
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
             // 서식ToolStripMenuItem
             // 
             this.서식ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -285,20 +291,129 @@ namespace NOTEPAD
             // autoLineChange
             // 
             this.autoLineChange.Name = "autoLineChange";
-            this.autoLineChange.Size = new System.Drawing.Size(180, 22);
+            this.autoLineChange.Size = new System.Drawing.Size(161, 22);
             this.autoLineChange.Text = "자동 줄 바꿈(W)";
             // 
             // font
             // 
             this.font.Name = "font";
-            this.font.Size = new System.Drawing.Size(180, 22);
+            this.font.Size = new System.Drawing.Size(161, 22);
             this.font.Text = "글꼴(F)";
+            // 
+            // 보기ToolStripMenuItem
+            // 
+            this.보기ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.확대하기축소하기ToolStripMenuItem,
+            this.status});
+            this.보기ToolStripMenuItem.Name = "보기ToolStripMenuItem";
+            this.보기ToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.보기ToolStripMenuItem.Text = "보기(V)";
+            // 
+            // 확대하기축소하기ToolStripMenuItem
+            // 
+            this.확대하기축소하기ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.zoomIn,
+            this.zoomOut,
+            this.zoomRestore});
+            this.확대하기축소하기ToolStripMenuItem.Name = "확대하기축소하기ToolStripMenuItem";
+            this.확대하기축소하기ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.확대하기축소하기ToolStripMenuItem.Text = "확대하기/축소하기";
+            // 
+            // zoomIn
+            // 
+            this.zoomIn.Name = "zoomIn";
+            this.zoomIn.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Oemplus)));
+            this.zoomIn.Size = new System.Drawing.Size(284, 22);
+            this.zoomIn.Text = "확대(I)";
+            // 
+            // zoomOut
+            // 
+            this.zoomOut.Name = "zoomOut";
+            this.zoomOut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.OemMinus)));
+            this.zoomOut.Size = new System.Drawing.Size(284, 22);
+            this.zoomOut.Text = "축소(O)";
+            // 
+            // zoomRestore
+            // 
+            this.zoomRestore.Name = "zoomRestore";
+            this.zoomRestore.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D0)));
+            this.zoomRestore.Size = new System.Drawing.Size(284, 22);
+            this.zoomRestore.Text = "확대하기/축소하기 기본값 복원";
+            // 
+            // status
+            // 
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(175, 22);
+            this.status.Text = "상태표시줄(S)";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3,
+            this.toolStripStatusLabel4,
+            this.toolStripStatusLabel5});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 413);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(629, 24);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(125, 17);
+            this.toolStripStatusLabel1.Spring = true;
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(104, 19);
+            this.toolStripStatusLabel2.Spring = true;
+            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabel3.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(125, 19);
+            this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(125, 19);
+            this.toolStripStatusLabel4.Text = "toolStripStatusLabel4";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabel5.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(125, 19);
+            this.toolStripStatusLabel5.Text = "toolStripStatusLabel5";
             // 
             // FrmNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 437);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -306,6 +421,8 @@ namespace NOTEPAD
             this.Text = "제목 없음";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,6 +462,18 @@ namespace NOTEPAD
         private System.Windows.Forms.ToolStripMenuItem 서식ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoLineChange;
         private System.Windows.Forms.ToolStripMenuItem font;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 보기ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem status;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripMenuItem 확대하기축소하기ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zoomIn;
+        private System.Windows.Forms.ToolStripMenuItem zoomOut;
+        private System.Windows.Forms.ToolStripMenuItem zoomRestore;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
     }
 }
 
