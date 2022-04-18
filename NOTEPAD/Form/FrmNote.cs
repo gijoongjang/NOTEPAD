@@ -61,6 +61,7 @@ namespace NOTEPAD
             copy.Enabled = false;
             delete.Enabled = false;
             find.Enabled = false;
+            nextFind.Enabled = false;
 
             autoLineChange.Checked = true;
             status.Checked = true;
@@ -108,6 +109,9 @@ namespace NOTEPAD
             zoomOut.Click += Event_ZoomOut;
             zoomRestore.Click += Event_ZoomRestore;
             status.Click += Event_Status;
+
+            //도움말
+            info.Click += Event_Info;
         }
 
         private void Event_TextChanged(object sender, EventArgs e)
@@ -118,6 +122,7 @@ namespace NOTEPAD
             copy.Enabled = true;
             delete.Enabled= true;
             find.Enabled = true;
+            nextFind.Enabled = true;
 
             toolStripStatusLabel2.Text = LookUtil.GetStatusBarLineAndColumn(CurrentLine, CurrentColumn);
         }
@@ -354,6 +359,14 @@ namespace NOTEPAD
                 status.Checked = true;
                 toolStripStatusLabel2.Text = LookUtil.GetStatusBarLineAndColumn(CurrentLine, CurrentColumn);
             }
+        }
+
+        private void Event_Info(object sender, EventArgs e)
+        {
+            bool result = FrmInformation.Popup();
+
+            if (!result)
+                return;
         }
 
         private void Find()
