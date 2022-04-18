@@ -70,10 +70,10 @@
     <Compile Include="Form\FrmMoveLine.Designer.cs">
       <DependentUpon>FrmMoveLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmInformation.cs">
+    <Compile Include="Form\FrmInformation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmInformation.Designer.cs">
+    <Compile Include="Form\FrmInformation.Designer.cs">
       <DependentUpon>FrmInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="Lib\Util\FileUtil.cs" />
@@ -98,7 +98,7 @@
     <EmbeddedResource Include="Form\FrmMoveLine.resx">
       <DependentUpon>FrmMoveLine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmInformation.resx">
+    <EmbeddedResource Include="Form\FrmInformation.resx">
       <DependentUpon>FrmInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
