@@ -35,7 +35,7 @@ namespace NOTEPAD
 
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.Image = Properties.Resources.window;
-            pictureBox2.Image = Properties.Resources.notepad;
+            pictureBox2.Image = Properties.Resources.notepad.ToBitmap();
         }
 
         protected override void InitEvent()

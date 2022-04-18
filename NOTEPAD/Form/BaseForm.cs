@@ -19,8 +19,9 @@ namespace NOTEPAD
             this.Load += new EventHandler(Event_LoadForm);
             this.FormClosed += new FormClosedEventHandler(Event_ClosedForm);
 
-            Bitmap bitmap = new Bitmap(Properties.Resources.notepad);
-            Icon = Icon.FromHandle(bitmap.GetHicon());
+            //Bitmap bitmap = new Bitmap(Properties.Resources.notepad);
+            //Icon = Properties.Resources.
+            this.Icon = Properties.Resources.notepad;
         }
 
         protected virtual void InitUI()

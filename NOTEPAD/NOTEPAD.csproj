@@ -124,9 +124,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Resources\notepad.png" />
+    <Content Include="Resources\notepad.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Resources\window.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
