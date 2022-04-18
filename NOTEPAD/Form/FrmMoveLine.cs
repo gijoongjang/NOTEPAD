@@ -30,6 +30,7 @@ namespace NOTEPAD
         protected override void InitEvent()
         {
             textBox1.KeyPress += Event_KeyPress;
+            textBox1.KeyDown += Event_KeyDown;
 
             button1.Click += Event_Move;
             button2.Click += Event_Close;
@@ -48,6 +49,12 @@ namespace NOTEPAD
 
                 e.Handled = true;
             }
+        }
+
+        private void Event_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                button1.PerformClick();
         }
 
         private void Event_Move(object sender, EventArgs e)
